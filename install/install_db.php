@@ -266,7 +266,8 @@ if ($g5_install || $is_install === false) {
     for ($i=0; $i<count($tmp_bo_table); $i++)
     {
 
-        $bo_skin = ($tmp_bo_table[$i] === 'gallery') ? 'gallery' : 'basic';
+        $bo_skin_pc = ($tmp_bo_table[$i] === 'gallery') ? 'gallery' : 'theme/basic-vditor';
+        $bo_skin_mobile = ($tmp_bo_table[$i] === 'gallery') ? 'gallery' : 'basic';
 
         $sql = " insert into `{$table_prefix}board`
                     set bo_table = '$tmp_bo_table[$i]',
@@ -276,15 +277,15 @@ if ($g5_install || $is_install === false) {
                         bo_admin            = '',
                         bo_list_level       = '1',
                         bo_read_level       = '1',
-                        bo_write_level      = '1',
-                        bo_reply_level      = '1',
-                        bo_comment_level    = '1',
-                        bo_html_level       = '1',
-                        bo_link_level       = '1',
-                        bo_count_modify     = '1',
-                        bo_count_delete     = '1',
-                        bo_upload_level     = '1',
-                        bo_download_level   = '1',
+                        bo_write_level      = '2',
+                        bo_reply_level      = '2',
+                        bo_comment_level    = '2',
+                        bo_html_level       = '2',
+                        bo_link_level       = '2',
+                        bo_count_modify     = '2',
+                        bo_count_delete     = '2',
+                        bo_upload_level     = '2',
+                        bo_download_level   = '2',
                         bo_read_point       = '-1',
                         bo_write_point      = '5',
                         bo_comment_point    = '1',
@@ -294,7 +295,8 @@ if ($g5_install || $is_install === false) {
                         bo_use_sideview     = '0',
                         bo_use_file_content = '0',
                         bo_use_secret       = '0',
-                        bo_use_dhtml_editor = '0',
+                        bo_use_dhtml_editor = '1',
+                        bo_select_editor    = 'vditor3',
                         bo_use_rss_view     = '0',
                         bo_use_good         = '0',
                         bo_use_nogood       = '0',
@@ -312,8 +314,8 @@ if ($g5_install || $is_install === false) {
                         bo_new              = '24',
                         bo_hot              = '100',
                         bo_image_width      = '835',
-                        bo_skin             = '$bo_skin',
-                        bo_mobile_skin      = '$bo_skin',
+                        bo_skin             = '$bo_skin_pc',
+                        bo_mobile_skin      = '$bo_skin_mobile',
                         bo_include_head     = '_head.php',
                         bo_include_tail     = '_tail.php',
                         bo_content_head     = '',

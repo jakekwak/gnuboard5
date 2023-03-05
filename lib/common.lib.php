@@ -554,7 +554,8 @@ function conv_content($content, $html, $filter=true)
 {
     global $config, $board;
 
-    if ($html)
+
+    if ($html == 1 || $html == 2)
     {
         $source = array();
         $target = array();
@@ -580,20 +581,21 @@ function conv_content($content, $html, $filter=true)
         if($filter)
             $content = html_purifier($content);
     }
-    else // text 이면
+    else if ($html == 0) // text 이면
     {
-        // & 처리 : &amp; &nbsp; 등의 코드를 정상 출력함
+        // & 처리 : &   등의 코드를 정상 출력함
         $content = html_symbol($content);
 
         // 공백 처리
-		//$content = preg_replace("/  /", "&nbsp; ", $content);
-		$content = str_replace("  ", "&nbsp; ", $content);
-		$content = str_replace("\n ", "\n&nbsp;", $content);
+        //$content = preg_replace("/  /", "  ", $content);
+        $content = str_replace("  ", "  ", $content);
+        $content = str_replace("\n ", "\n ", $content);
 
         $content = get_text($content, 1);
         $content = url_auto_link($content);
+    } if($html == 3) {
+        $content = get_text($content, 0);
     }
-
     return $content;
 }
 
