@@ -34,7 +34,7 @@ add_javascript('<script src="/plugin/editor/vditor3/editorOptions.js"></script>'
         }
         if ($is_html) {
             if ($is_dhtml_editor) {
-                $option_hidden .= '<input type="hidden" value="html1" name="html">';
+                        $option_hidden .= '<input type="hidden" value="markdown" name="html">';
             } else {
                 $option .= PHP_EOL.'<li class="chk_box"><input type="checkbox" id="html" name="html" onclick="html_auto_br(this);" class="selec_chk" value="'.$html_value.'" '.$html_checked.'>'.PHP_EOL.'<label for="html"><span></span>html</label></li>';
             }
